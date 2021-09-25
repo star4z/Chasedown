@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OutRunCamera : SwipeDetector
 {
-    public float v = 15;
     public float laneSize;
     public int currentLane = 0;
     public int minLane = -1;
@@ -15,12 +14,11 @@ public class OutRunCamera : SwipeDetector
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.velocity = Vector3.forward * v;
     }
 
     public override void OnSwipeLeft()
     {
-        Debug.Log("swiping left");
+        // Debug.Log("swiping left");
         if (currentLane > minLane)
         {
             _rigidbody.position += Vector3.left * laneSize;
@@ -30,7 +28,7 @@ public class OutRunCamera : SwipeDetector
 
     public override void OnSwipeRight()
     {
-        Debug.Log("swiping right");
+        // Debug.Log("swiping right");
         if (currentLane < maxLane)
         {
             _rigidbody.position += Vector3.right * laneSize;
