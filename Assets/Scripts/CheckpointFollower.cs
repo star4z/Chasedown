@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using UnityEngine;
 
 public class CheckpointFollower : MonoBehaviour
@@ -9,8 +8,10 @@ public class CheckpointFollower : MonoBehaviour
     public float v = 15;
     public List<Checkpoint> checkPoints;
     public int currentCheckpoint = 0;
-    public float RotationSpeed = 1;
+    public float rotationSpeed = 1;
     public OutRunCamera ps;
+    public Vector3 jumpForce = Vector3.forward * 15;
+
 
     private Rigidbody _rigidbody;
 
@@ -28,13 +29,24 @@ public class CheckpointFollower : MonoBehaviour
 
     private void Update()
     {
-        if (ps.playerState == PlayerState.DRIVING)
+        switch (ps.playerState)
         {
-            if (currentCheckpoint < checkPoints.Count)
-            {
-                LookAtNextCheckpoint();
-                MoveTowardsNextCheckpoint();
-            }
+            case PlayerState.Driving:
+                if (currentCheckpoint < checkPoints.Count)
+                {
+                    LookAtNextCheckpoint();
+                    MoveTowardsNextCheckpoint();
+                }
+                break;
+            case PlayerState.Jumping:
+                _rigidbody.AddForce(jumpForce);
+                break;
+            case PlayerState.Crashing:
+                break;
+            case PlayerState.Stopped:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -51,25 +63,26 @@ public class CheckpointFollower : MonoBehaviour
         // targetPos.x = targetPos.z = uint.MinValue;
         // var lookRotation = Quaternion.LookRotation(targetPos);
         // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
-        var _direction = (targetPos - transform.position).normalized;
-        if (_direction != Vector3.zero)
+        var direction = (targetPos - transform.position).normalized;
+        if (direction != Vector3.zero)
         {
             //create the rotation we need to be in to look at the target
-            var _lookRotation = Quaternion.LookRotation(_direction);
+            var lookRotation = Quaternion.LookRotation(direction);
             //rotate us over time according to speed until we are in the required rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
     }
 
     private void OnCheckPointReached(object sender, EventArgs e)
     {
-        if (ps.playerState == PlayerState.DRIVING)
+        if (ps.playerState == PlayerState.Driving)
         {
             Debug.Log($"reached checkpoint {currentCheckpoint}");
             currentCheckpoint++;
             if (currentCheckpoint >= checkPoints.Count)
             {
                 _rigidbody.velocity = Vector3.zero;
+                ps.playerState = PlayerState.Stopped;
             }
             // else
             // {
