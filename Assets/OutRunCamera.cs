@@ -21,7 +21,7 @@ public class OutRunCamera : SwipeDetector
         // Debug.Log("swiping left");
         if (currentLane > minLane)
         {
-            _rigidbody.position += Vector3.left * laneSize;
+            transform.localPosition += Vector3.left * laneSize;
             currentLane -= 1;
         }
     }
@@ -31,7 +31,7 @@ public class OutRunCamera : SwipeDetector
         // Debug.Log("swiping right");
         if (currentLane < maxLane)
         {
-            _rigidbody.position += Vector3.right * laneSize;
+            transform.localPosition += Vector3.right * laneSize;
             currentLane += 1;
         }
     }
