@@ -15,12 +15,17 @@ public class PlayerBehavior : MonoBehaviour
     public int maxFramesBetweenJumpTriggers = 2;
     public float modifierIncrPerSec = 1.1f;
     public int boostDurationMillis = 1500;
+    public int passThroughCrashDuration = 1500;
+    public int stopCrashDuration = 1500;
 
     private float _distanceTraveled;
-    private Dictionary<PlayerState, float> _velocityModifiers;
     private int _framesSinceLastOnJump;
     private float _timeModifier = 1;
     private DateTime _boostStarted;
+
+    private Dictionary<PlayerState, DateTime> _effectStartTimes = Enum.GetValues(typeof(PlayerState))
+        .Cast<PlayerState>()
+        .ToDictionary(s => s, s => (DateTime)default);
 
     private void Start()
     {
@@ -28,7 +33,23 @@ public class PlayerBehavior : MonoBehaviour
         swipeDetector.SwipeRight += SwipeDetectorOnSwipeRight;
         Jump.Jumping += JumpOnJumping;
         Boost.BoostStarted += BoostOnBoostStarted;
-        _velocityModifiers = velocityModifiers.ToDictionary(vm => vm.playerState, vm => vm.velocityModifier);
+        Obstacle.OnEnter += ObstacleOnOnEnter;
+    }
+
+    private void ObstacleOnOnEnter(object sender, Collider e)
+    {
+        if (sender is Obstacle { stopsThePlayer: true })
+        {
+            playerState = PlayerState.Crashed;
+            _effectStartTimes[PlayerState.Crashed] = DateTime.Now;
+        }
+        else
+        {
+            playerState = PlayerState.Crashing;
+            _effectStartTimes[PlayerState.Crashing] = DateTime.Now;
+        }
+
+        _timeModifier = 1;
     }
 
     private void BoostOnBoostStarted(object sender, Collider e)
@@ -50,17 +71,33 @@ public class PlayerBehavior : MonoBehaviour
 
     private void SwipeDetectorOnSwipeLeft(object sender, EventArgs e)
     {
-        if (playerState == PlayerState.Driving && currentPath > 0)
+        if (currentPath > 0)
         {
-            currentPath--;
+            if (playerState == PlayerState.Driving)
+            {
+                currentPath--;
+            }
+            else if (playerState == PlayerState.Crashed)
+            {
+                playerState = PlayerState.Driving;
+                currentPath--;
+            }
         }
     }
 
     private void SwipeDetectorOnSwipeRight(object sender, EventArgs e)
     {
-        if (playerState == PlayerState.Driving && currentPath < pathCreators.Length - 1)
+        if (currentPath < pathCreators.Length - 1)
         {
-            currentPath++;
+            if (playerState == PlayerState.Driving)
+            {
+                currentPath++;
+            }
+            else if (playerState == PlayerState.Crashed)
+            {
+                playerState = PlayerState.Driving;
+                currentPath++;
+            }
         }
     }
 
@@ -72,6 +109,28 @@ public class PlayerBehavior : MonoBehaviour
 
         CheckIfJumping();
         CheckIfBoosting();
+        CheckIfCrashing();
+        CheckIfCrashed();
+    }
+
+    private void CheckIfCrashed()
+    {
+        if (playerState == PlayerState.Crashed &&
+            DateTime.Now - _effectStartTimes[PlayerState.Crashed] >=
+            TimeSpan.FromMilliseconds(passThroughCrashDuration))
+        {
+            playerState = PlayerState.Driving;
+        }
+    }
+
+    private void CheckIfCrashing()
+    {
+        if (playerState == PlayerState.Crashing &&
+            DateTime.Now - _effectStartTimes[PlayerState.Crashing] >=
+            TimeSpan.FromMilliseconds(passThroughCrashDuration))
+        {
+            playerState = PlayerState.Driving;
+        }
     }
 
     private void CheckIfBoosting()
@@ -122,10 +181,12 @@ public class PlayerBehavior : MonoBehaviour
     {
         _timeModifier += Time.deltaTime * modifierIncrPerSec;
         var actualVelocity = velocity * _timeModifier * Time.deltaTime;
-        if (_velocityModifiers.TryGetValue(playerState, out var stateModifier))
+        if (velocityModifiers.Any(vm => vm.playerState == playerState))
         {
+            var stateModifier = velocityModifiers.First(vm => vm.playerState == playerState).velocityModifier;
             actualVelocity *= stateModifier;
         }
+
         return actualVelocity;
     }
 }
