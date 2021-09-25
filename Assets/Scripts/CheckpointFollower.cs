@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class CheckpointFollower : MonoBehaviour
@@ -9,6 +10,7 @@ public class CheckpointFollower : MonoBehaviour
     public List<Checkpoint> checkPoints;
     public int currentCheckpoint = 0;
     public float RotationSpeed = 1;
+    public OutRunCamera ps;
 
     private Rigidbody _rigidbody;
 
@@ -26,10 +28,13 @@ public class CheckpointFollower : MonoBehaviour
 
     private void Update()
     {
-        if (currentCheckpoint < checkPoints.Count)
+        if (ps.playerState == PlayerState.DRIVING)
         {
-            LookAtNextCheckpoint();
-            MoveTowardsNextCheckpoint();
+            if (currentCheckpoint < checkPoints.Count)
+            {
+                LookAtNextCheckpoint();
+                MoveTowardsNextCheckpoint();
+            }
         }
     }
 
@@ -58,15 +63,18 @@ public class CheckpointFollower : MonoBehaviour
 
     private void OnCheckPointReached(object sender, EventArgs e)
     {
-        Debug.Log($"reached checkpoint {currentCheckpoint}");
-        currentCheckpoint++;
-        if (currentCheckpoint >= checkPoints.Count)
+        if (ps.playerState == PlayerState.DRIVING)
         {
-            _rigidbody.velocity = Vector3.zero;
+            Debug.Log($"reached checkpoint {currentCheckpoint}");
+            currentCheckpoint++;
+            if (currentCheckpoint >= checkPoints.Count)
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+            // else
+            // {
+            //     LookAtCheckpoint();
+            // }
         }
-        // else
-        // {
-        //     LookAtCheckpoint();
-        // }
     }
 }
