@@ -689,9 +689,15 @@ MonoBehaviour:
     velocityModifier: 1.3
   - playerState: 4
     velocityModifier: 3
+  - playerState: 2
+    velocityModifier: 0.5
+  - playerState: 5
+    velocityModifier: 0
   maxFramesBetweenJumpTriggers: 2
   modifierIncrPerSec: 0
   boostDurationMillis: 1500
+  passThroughCrashDuration: 1500
+  stopCrashDuration: 1500
 --- !u!114 &1049492062682026715
 MonoBehaviour:
   m_ObjectHideFlags: 0
