@@ -45,14 +45,15 @@ public class CheckpointFollower : MonoBehaviour
         var targetPos = checkPoints[currentCheckpoint].transform.position;
         // targetPos.x = targetPos.z = uint.MinValue;
         // var lookRotation = Quaternion.LookRotation(targetPos);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, damping * Time.deltaTime);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, RotationSpeed * Time.deltaTime);
         var _direction = (targetPos - transform.position).normalized;
- 
-        //create the rotation we need to be in to look at the target
-        var _lookRotation = Quaternion.LookRotation(_direction);
- 
-        //rotate us over time according to speed until we are in the required rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+        if (_direction != Vector3.zero)
+        {
+            //create the rotation we need to be in to look at the target
+            var _lookRotation = Quaternion.LookRotation(_direction);
+            //rotate us over time according to speed until we are in the required rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+        }
     }
 
     private void OnCheckPointReached(object sender, EventArgs e)
