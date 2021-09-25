@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class SwipeDetector : MonoBehaviour
+public class SwipeDetector : MonoBehaviour
 {
     private Vector2 fingerDownPos;
     private Vector2 fingerUpPos;
@@ -11,6 +13,13 @@ public abstract class SwipeDetector : MonoBehaviour
     public bool detectSwipeAfterRelease = false;
 
     public float SWIPE_THRESHOLD = 20f;
+
+    public event EventHandler SwipeUp;
+    public event EventHandler SwipeDown;
+
+    public event EventHandler SwipeLeft;
+
+    public event EventHandler SwipeRight;
 
     // Update is called once per frame
     public virtual void Update()
@@ -105,21 +114,21 @@ public abstract class SwipeDetector : MonoBehaviour
 
     public virtual void OnSwipeUp()
     {
-        //Do something when swiped up
+        SwipeUp?.Invoke(this, null);
     }
 
     public virtual void OnSwipeDown()
     {
-        //Do something when swiped down
+        SwipeDown?.Invoke(this, null);
     }
 
     public virtual void OnSwipeLeft()
     {
-        //Do something when swiped left
+        SwipeLeft?.Invoke(this, null);
     }
 
     public virtual void OnSwipeRight()
     {
-        //Do something when swiped right
+        SwipeRight?.Invoke(this, null);
     }
 }
