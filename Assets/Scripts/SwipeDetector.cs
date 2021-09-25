@@ -13,7 +13,7 @@ public abstract class SwipeDetector : MonoBehaviour
     public float SWIPE_THRESHOLD = 20f;
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {

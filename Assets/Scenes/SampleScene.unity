@@ -781,11 +781,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectSwipeAfterRelease: 1
   SWIPE_THRESHOLD: 20
-  laneSize: 5
+  laneSize: 4
   currentLane: 0
   minLane: -1
   maxLane: 1
   playerState: 0
+  jumpDurationInMillis: 500
 --- !u!54 &963194230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -895,8 +896,9 @@ MonoBehaviour:
   - {fileID: 1931242893}
   - {fileID: 726530893}
   currentCheckpoint: 0
-  RotationSpeed: 15
+  rotationSpeed: 1
   ps: {fileID: 963194229}
+  jumpForce: {x: 0, y: 0, z: 25}
 --- !u!54 &1102721029
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1400,11 +1402,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1228523746548428, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalScale.z
@@ -1412,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1420,7 +1426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.66
+      value: 46.57
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalRotation.w

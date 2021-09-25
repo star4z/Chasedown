@@ -1,7 +1,4 @@
-﻿namespace DefaultNamespace
+﻿public enum PlayerState
 {
-    public enum PlayerState
-    {
-        DRIVING, JUMPING, CRASHING
-    }
+    Driving, Jumping, Crashing, Stopped
 }
