@@ -7,7 +7,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(GetComponent<Collider>());
+        // Destroy(GetComponent<Collider>());
         CheckpointReached?.Invoke(this, null);
     }
 }
