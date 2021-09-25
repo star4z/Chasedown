@@ -41,7 +41,7 @@ public class PlayerBehavior : MonoBehaviour
         if (sender is Obstacle { stopsThePlayer: true })
         {
             playerState = PlayerState.Crashed;
-            // _effectStartTimes[PlayerState.Crashed] = DateTime.Now;
+            _effectStartTimes[PlayerState.Crashed] = DateTime.Now;
         }
         else
         {
@@ -77,7 +77,8 @@ public class PlayerBehavior : MonoBehaviour
             {
                 currentPath--;
             }
-            else if (playerState == PlayerState.Crashed)
+            else if (playerState == PlayerState.Crashed && DateTime.Now - _effectStartTimes[PlayerState.Crashed] >=
+                TimeSpan.FromMilliseconds(stopCrashDuration))
             {
                 playerState = PlayerState.Driving;
                 currentPath--;
@@ -93,7 +94,8 @@ public class PlayerBehavior : MonoBehaviour
             {
                 currentPath++;
             }
-            else if (playerState == PlayerState.Crashed)
+            else if (playerState == PlayerState.Crashed && DateTime.Now - _effectStartTimes[PlayerState.Crashed] >=
+                TimeSpan.FromMilliseconds(stopCrashDuration))
             {
                 playerState = PlayerState.Driving;
                 currentPath++;
