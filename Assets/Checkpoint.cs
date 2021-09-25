@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -9,6 +7,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(GetComponent<Collider>());
         CheckpointReached?.Invoke(this, null);
     }
 }
