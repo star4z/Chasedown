@@ -14,11 +14,13 @@ public class PlayerBehavior : MonoBehaviour
     public VelocityModifier[] velocityModifiers;
     public int maxFramesBetweenJumpTriggers = 2;
     public float modifierIncrPerSec = 1.1f;
+    public int boostDurationMillis = 1500;
 
     private float _distanceTraveled;
     private Dictionary<PlayerState, float> _velocityModifiers;
     private int _framesSinceLastOnJump;
     private float _timeModifier = 1;
+    private DateTime _boostStarted;
 
     private void Start()
     {
@@ -31,7 +33,8 @@ public class PlayerBehavior : MonoBehaviour
 
     private void BoostOnBoostStarted(object sender, Collider e)
     {
-        throw new NotImplementedException();
+        playerState = PlayerState.Boosting;
+        _boostStarted = DateTime.Now;
     }
 
     private void JumpOnJumping(object sender, Collider e)
@@ -64,18 +67,24 @@ public class PlayerBehavior : MonoBehaviour
     private void Update()
     {
         _distanceTraveled += GetStep();
-        if (_distanceTraveled >= pathCreators[currentPath].path.length)
-        {
-            playerState = PlayerState.Stopped;
-        }
-        var pathPosition = pathCreators[currentPath].path
-            .GetPointAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
-        var transform1 = transform;
-        transform1.position = new Vector3(pathPosition.x, transform1.position.y, pathPosition.z);
-        var pathRotation = pathCreators[currentPath].path
-            .GetRotationAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
-        transform.rotation = pathRotation;
+        CheckIfStopped();
+        UpdatePathPositionAndRotation();
 
+        CheckIfJumping();
+        CheckIfBoosting();
+    }
+
+    private void CheckIfBoosting()
+    {
+        if (playerState == PlayerState.Boosting &&
+            DateTime.Now - _boostStarted >= TimeSpan.FromMilliseconds(boostDurationMillis))
+        {
+            playerState = PlayerState.Driving;
+        }
+    }
+
+    private void CheckIfJumping()
+    {
         if (playerState == PlayerState.Jumping)
         {
             // Debug.Log(framesSinceLastOnJump);
@@ -88,6 +97,25 @@ public class PlayerBehavior : MonoBehaviour
                 _framesSinceLastOnJump++;
             }
         }
+    }
+
+    private void CheckIfStopped()
+    {
+        if (_distanceTraveled >= pathCreators[currentPath].path.length)
+        {
+            playerState = PlayerState.Stopped;
+        }
+    }
+
+    private void UpdatePathPositionAndRotation()
+    {
+        var pathPosition = pathCreators[currentPath].path
+            .GetPointAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
+        var transform1 = transform;
+        transform1.position = new Vector3(pathPosition.x, transform1.position.y, pathPosition.z);
+        var pathRotation = pathCreators[currentPath].path
+            .GetRotationAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
+        transform.rotation = pathRotation;
     }
 
     private float GetStep()
