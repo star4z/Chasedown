@@ -12,21 +12,18 @@ public class PlayerBehavior : MonoBehaviour
     public int currentPath = 1;
     public PlayerState playerState = PlayerState.Driving;
     public VelocityModifier[] velocityModifiers;
-    public int minJumpDurationMillis;
     public int maxFramesBetweenJumpTriggers = 2;
+    public float modifierIncrPerSec = 1.1f;
 
     private float _distanceTraveled;
     private Dictionary<PlayerState, float> _velocityModifiers;
-    // private DateTime _jumpTime;
-    private int _framesSinceLastOnJump = 0;
-    
+    private int _framesSinceLastOnJump;
+    private float _timeModifier = 1;
 
     private void Start()
     {
         swipeDetector.SwipeLeft += SwipeDetectorOnSwipeLeft;
         swipeDetector.SwipeRight += SwipeDetectorOnSwipeRight;
-        // Jump.JumpStarted += JumpOnJumpStarted;
-        // Jump.JumpFinished += JumpOnJumpFinished;
         Jump.Jumping += JumpOnJumping;
         _velocityModifiers = velocityModifiers.ToDictionary(vm => vm.playerState, vm => vm.velocityModifier);
     }
@@ -41,21 +38,6 @@ public class PlayerBehavior : MonoBehaviour
         playerState = PlayerState.Jumping;
         _framesSinceLastOnJump = 0;
     }
-
-    // private void JumpOnJumpFinished(object sender, Collider collider1)
-    // {
-    //     if (playerState != PlayerState.Jumping || DateTime.Now - _jumpTime < TimeSpan.FromMilliseconds(minJumpDurationMillis)) return;
-    //     Debug.Log("jumped");
-    //     playerState = PlayerState.Driving;
-    // }
-    //
-    // private void JumpOnJumpStarted(object sender, Collider collider1)
-    // {
-    //     if (playerState == PlayerState.Jumping) return;
-    //     Debug.Log("jumping!");
-    //     playerState = PlayerState.Jumping;
-    //     _jumpTime = DateTime.Now;
-    // }
 
     private void SwipeDetectorOnSwipeLeft(object sender, EventArgs e)
     {
@@ -100,11 +82,12 @@ public class PlayerBehavior : MonoBehaviour
 
     private float GetStep()
     {
-        if (_velocityModifiers.TryGetValue(playerState, out var modifier))
+        _timeModifier += Time.deltaTime * modifierIncrPerSec;
+        var actualVelocity = velocity * _timeModifier * Time.deltaTime;
+        if (_velocityModifiers.TryGetValue(playerState, out var stateModifier))
         {
-            return modifier * velocity * Time.deltaTime;
+            actualVelocity *= stateModifier;
         }
-
-        return velocity * Time.deltaTime;
+        return actualVelocity;
     }
 }
