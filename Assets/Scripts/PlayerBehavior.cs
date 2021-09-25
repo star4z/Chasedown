@@ -25,7 +25,13 @@ public class PlayerBehavior : MonoBehaviour
         swipeDetector.SwipeLeft += SwipeDetectorOnSwipeLeft;
         swipeDetector.SwipeRight += SwipeDetectorOnSwipeRight;
         Jump.Jumping += JumpOnJumping;
+        Boost.BoostStarted += BoostOnBoostStarted;
         _velocityModifiers = velocityModifiers.ToDictionary(vm => vm.playerState, vm => vm.velocityModifier);
+    }
+
+    private void BoostOnBoostStarted(object sender, Collider e)
+    {
+        throw new NotImplementedException();
     }
 
     private void JumpOnJumping(object sender, Collider e)
@@ -58,10 +64,14 @@ public class PlayerBehavior : MonoBehaviour
     private void Update()
     {
         _distanceTraveled += GetStep();
+        if (_distanceTraveled >= pathCreators[currentPath].path.length)
+        {
+            playerState = PlayerState.Stopped;
+        }
         var pathPosition = pathCreators[currentPath].path
             .GetPointAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
-        transform.position = new Vector3(pathPosition.x, transform.position.y, pathPosition.z);
-        // transform.position = pathPosition;
+        var transform1 = transform;
+        transform1.position = new Vector3(pathPosition.x, transform1.position.y, pathPosition.z);
         var pathRotation = pathCreators[currentPath].path
             .GetRotationAtDistance(_distanceTraveled, EndOfPathInstruction.Stop);
         transform.rotation = pathRotation;
