@@ -1,4 +1,4 @@
 ﻿public enum PlayerState
 {
-    Driving, Jumping, Crashing, Stopped, Boosting
+    Driving, Jumping, Crashing, Stopped, Boosting, Crashed
 }
