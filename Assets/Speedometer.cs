@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class Speedometer: MonoBehaviour
-private float pos;
-
-
+public class Speedometer : MonoBehaviour
 {
+    private Vector3 pos;
+    private Vector3 velocity;
+
+
     void Awake()
-    { pos = transform.position;
+    {
+        pos = transform.position;
     }
 
     void Update()
@@ -16,3 +18,4 @@ private float pos;
         velocity = (transform.position - pos) / Time.deltaTime;
         pos = transform.position;
     }
+}
