@@ -798,7 +798,7 @@ MonoBehaviour:
   - {fileID: 1812564698}
   - {fileID: 726530893}
   currentCheckpoint: 0
-  RotationSpeed: 1
+  RotationSpeed: 25
 --- !u!54 &1102721029
 Rigidbody:
   m_ObjectHideFlags: 0
