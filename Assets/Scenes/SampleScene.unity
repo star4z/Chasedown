@@ -1000,6 +1000,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427304532025992, guid: c256e5d9fbc22784dbca582910e16769, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
@@ -1157,6 +1161,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
+      propertyPath: velocity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: minJumpDurationMillis
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
       propertyPath: pathCreators.Array.data[0]
       value: 
       objectReference: {fileID: 256550046}
@@ -1170,6 +1184,31 @@ PrefabInstance:
       propertyPath: pathCreators.Array.data[2]
       value: 
       objectReference: {fileID: 855815484}
+    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: velocityModifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: velocityModifiers.Array.data[0].playerState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: velocityModifiers.Array.data[0].velocityModifier
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026693, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062682026693, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1795381662726064369, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: m_Enabled
@@ -1194,6 +1233,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1559101951}
+    - target: {fileID: 5657341056095155232, guid: 67b094ecdf57ade4a80b4aa4bb3c3c5d,
+        type: 3}
+      propertyPath: distance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5657341056095155232, guid: 67b094ecdf57ade4a80b4aa4bb3c3c5d,
         type: 3}
       propertyPath: parentRigidbody
