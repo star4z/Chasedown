@@ -1434,12 +1434,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDestroyedOnCollision: 1
   stopsThePlayer: 0
+--- !u!1 &1500940334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 483166690842985088, guid: a6ec9cf57330f2d4697f0b63de76b529,
+    type: 3}
+  m_PrefabInstance: {fileID: 355540420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1500940335 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 483166690842985100, guid: a6ec9cf57330f2d4697f0b63de76b529,
     type: 3}
   m_PrefabInstance: {fileID: 355540420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1500940336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500940334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e28b0a28d1b410e883180e8e47bbda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1530726369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4169174760484110, guid: 36678fb477b63ae40802a0a210892873,
@@ -1970,6 +1988,26 @@ PrefabInstance:
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 355540421}
+    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: bpm
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: musicUI
+      value: 
+      objectReference: {fileID: 1500940336}
+    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: startDelay
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
+        type: 3}
+      propertyPath: startDelayInSeconds
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: startButton
