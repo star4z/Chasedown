@@ -8,7 +8,7 @@ public class MusicBehavior: MonoBehaviour
     public float startDelayInSeconds;
     public int firstBeat = 0;
     public int totalBeats = 8;
-    public MusicUI musicUI;
+    // public MusicUI musicUI;
 
     private bool _musicPlaying;
     private int _lastBeat;
@@ -35,14 +35,14 @@ public class MusicBehavior: MonoBehaviour
 
     private void PlayerBehaviorOnStartLevel(object sender, EventArgs e)
     {
-        musicUI.ResetAllStatuses();
+        // musicUI.ResetAllStatuses();
         audioSource.PlayDelayed(startDelayInSeconds);
         _musicPlaying = true;
         _lastBeat = firstBeat;
-        if (musicUI != null)
-        {
-            musicUI.SetCurrentBeat(_lastBeat);
-        }
+        // if (musicUI != null)
+        // {
+        //     musicUI.SetCurrentBeat(_lastBeat);
+        // }
     }
 
     private void Update()
@@ -70,10 +70,10 @@ public class MusicBehavior: MonoBehaviour
     {
         _lastBeat = CurrentBeat();
         _lastBeatTime = audioSource.time;
-        if (musicUI != null)
-        {
-            musicUI.SetCurrentBeat(_lastBeat);
-        }
+        // if (musicUI != null)
+        // {
+            // musicUI.SetCurrentBeat(_lastBeat);
+        // }
     }
 
     private int CurrentBeat()
