@@ -1737,11 +1737,6 @@ PrefabInstance:
       propertyPath: musicUI
       value: 
       objectReference: {fileID: 2078194725}
-    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: musicUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: velocity
