@@ -22,6 +22,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public static event EventHandler StartLevel;
     public static event EventHandler FinishLevel;
+    public static event EventHandler LaneChange;
 
     private float _distanceTraveled;
     private int _framesSinceLastOnJump;
@@ -96,12 +97,14 @@ public class PlayerBehavior : MonoBehaviour
             if (playerState == PlayerState.Driving)
             {
                 currentPath--;
+                LaneChange?.Invoke(this, EventArgs.Empty);
             }
             else if (playerState == PlayerState.Crashed && DateTime.Now - _effectStartTimes[PlayerState.Crashed] >=
                 TimeSpan.FromMilliseconds(stopCrashDuration))
             {
                 playerState = PlayerState.Driving;
                 currentPath--;
+                LaneChange?.Invoke(this, EventArgs.Empty);
             }
         }
     }
@@ -113,12 +116,14 @@ public class PlayerBehavior : MonoBehaviour
             if (playerState == PlayerState.Driving)
             {
                 currentPath++;
+                LaneChange?.Invoke(this, EventArgs.Empty);
             }
             else if (playerState == PlayerState.Crashed && DateTime.Now - _effectStartTimes[PlayerState.Crashed] >=
                 TimeSpan.FromMilliseconds(stopCrashDuration))
             {
                 playerState = PlayerState.Driving;
                 currentPath++;
+                LaneChange?.Invoke(this, EventArgs.Empty);
             }
         }
     }
