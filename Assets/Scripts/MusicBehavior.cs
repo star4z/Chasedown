@@ -29,7 +29,7 @@ public class MusicBehavior: MonoBehaviour
 
     private void PlayerBehaviorOnFinishLevel(object sender, EventArgs e)
     {
-        audioSource.Stop();
+        // audioSource.Stop();
         _musicPlaying = false;
     }
 
