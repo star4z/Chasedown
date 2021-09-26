@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1452401546}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &198493959
@@ -437,55 +437,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 894995963, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 774cdb454e8c96b4c89136848a24a5e4,
-        type: 3}
-    - target: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: failedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f4b8307f401fe844eb8bdef37c230e04,
-        type: 3}
-    - target: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: pendingSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 774cdb454e8c96b4c89136848a24a5e4,
-        type: 3}
-    - target: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: succeededSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: dc0c278f9d112d6459df469ab087188b,
-        type: 3}
-    - target: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: beats.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: beatImages.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835185932, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 96.3446
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835185932, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 95.1455
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835185932, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 273
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835185932, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1936943427, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: aaa8cf191e1ab60449b14ec8cd0ebaf7,
-        type: 3}
     - target: {fileID: 483166690842985088, guid: a6ec9cf57330f2d4697f0b63de76b529,
         type: 3}
       propertyPath: m_Name
@@ -603,18 +554,6 @@ PrefabInstance:
       objectReference: {fileID: 5657341054695576838}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
---- !u!114 &355540421 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 483166690663478197, guid: a6ec9cf57330f2d4697f0b63de76b529,
-    type: 3}
-  m_PrefabInstance: {fileID: 355540420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &381999879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1077,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1738180870}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1452401546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 690953337, guid: a6ec9cf57330f2d4697f0b63de76b529,
+    type: 3}
+  m_PrefabInstance: {fileID: 355540420}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452401549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 690953340, guid: a6ec9cf57330f2d4697f0b63de76b529,
+    type: 3}
+  m_PrefabInstance: {fileID: 355540420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452401546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1491210893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1240,7 +1197,7 @@ MonoBehaviour:
   stopsThePlayer: 0
 --- !u!114 &1500940336 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529,
+  m_CorrespondingSourceObject: {fileID: 4617914911592701261, guid: a6ec9cf57330f2d4697f0b63de76b529,
     type: 3}
   m_PrefabInstance: {fileID: 355540420}
   m_PrefabAsset: {fileID: 0}
@@ -1775,11 +1732,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Car_Muscle_01
       objectReference: {fileID: 0}
-    - target: {fileID: 1049492062193470221, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: TimerText
-      value: 
-      objectReference: {fileID: 355540421}
     - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: musicUI
@@ -1789,7 +1741,7 @@ PrefabInstance:
         type: 3}
       propertyPath: startButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1452401549}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: pathCreators.Array.data[0]
