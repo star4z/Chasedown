@@ -40,6 +40,12 @@ public class PlayerBehavior : MonoBehaviour
         Boost.BoostStarted += BoostOnBoostStarted;
         Obstacle.OnEnter += ObstacleOnOnEnter;
         startButton.onClick.AddListener(StartButtonOnClick);
+        Timer.TimedOut += TimerOnTimedOut;
+    }
+
+    private void TimerOnTimedOut(object sender, EventArgs e)
+    {
+        playerState = PlayerState.Stopped;
     }
 
     private void StartButtonOnClick()
