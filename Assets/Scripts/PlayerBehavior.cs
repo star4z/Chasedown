@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PathCreation;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -10,20 +11,24 @@ public class PlayerBehavior : MonoBehaviour
     public float velocity = 25;
     public SwipeDetector swipeDetector;
     public int currentPath = 1;
-    public PlayerState playerState = PlayerState.Driving;
+    public PlayerState playerState = PlayerState.Stopped;
     public VelocityModifier[] velocityModifiers;
     public int maxFramesBetweenJumpTriggers = 2;
     public float modifierIncrPerSec = 1.1f;
     public int boostDurationMillis = 1500;
     public int passThroughCrashDuration = 1500;
     public int stopCrashDuration = 1500;
+    public Button startButton;
+
+    public static event EventHandler StartLevel;
+    public static event EventHandler FinishLevel;
 
     private float _distanceTraveled;
     private int _framesSinceLastOnJump;
     private float _timeModifier = 1;
     private DateTime _boostStarted;
 
-    private Dictionary<PlayerState, DateTime> _effectStartTimes = Enum.GetValues(typeof(PlayerState))
+    private readonly Dictionary<PlayerState, DateTime> _effectStartTimes = Enum.GetValues(typeof(PlayerState))
         .Cast<PlayerState>()
         .ToDictionary(s => s, s => (DateTime)default);
 
@@ -34,6 +39,15 @@ public class PlayerBehavior : MonoBehaviour
         Jump.Jumping += JumpOnJumping;
         Boost.BoostStarted += BoostOnBoostStarted;
         Obstacle.OnEnter += ObstacleOnOnEnter;
+        startButton.onClick.AddListener(StartButtonOnClick);
+    }
+
+    private void StartButtonOnClick()
+    {
+        //TODO: Start music
+        playerState = PlayerState.Driving;
+        startButton.gameObject.SetActive(false);
+        StartLevel?.Invoke(this, EventArgs.Empty);
     }
 
     private void ObstacleOnOnEnter(object sender, Collider e)
@@ -154,6 +168,7 @@ public class PlayerBehavior : MonoBehaviour
         if (_distanceTraveled >= pathCreators[currentPath].path.length)
         {
             playerState = PlayerState.Stopped;
+            FinishLevel?.Invoke(this, EventArgs.Empty);
         }
     }
 
