@@ -20,6 +20,9 @@ public class PlayerBehavior : MonoBehaviour
     public int stopCrashDuration = 1500;
     public Button startButton;
 
+    public static event EventHandler StartLevel;
+    public static event EventHandler FinishLevel;
+
     private float _distanceTraveled;
     private int _framesSinceLastOnJump;
     private float _timeModifier = 1;
@@ -44,6 +47,7 @@ public class PlayerBehavior : MonoBehaviour
         //TODO: Start music
         playerState = PlayerState.Driving;
         startButton.gameObject.SetActive(false);
+        StartLevel?.Invoke(this, EventArgs.Empty);
     }
 
     private void ObstacleOnOnEnter(object sender, Collider e)
@@ -164,6 +168,7 @@ public class PlayerBehavior : MonoBehaviour
         if (_distanceTraveled >= pathCreators[currentPath].path.length)
         {
             playerState = PlayerState.Stopped;
+            FinishLevel?.Invoke(this, EventArgs.Empty);
         }
     }
 
