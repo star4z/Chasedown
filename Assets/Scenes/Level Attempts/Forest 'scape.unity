@@ -1178,10 +1178,10 @@ Transform:
   m_LocalPosition: {x: 4.592046, y: -307.10095, z: 98.37048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 185086064}
   - {fileID: 871391095}
   - {fileID: 1315102195}
   - {fileID: 649104133}
+  - {fileID: 185086064}
   - {fileID: 874037434}
   - {fileID: 47241598}
   - {fileID: 453697614}
@@ -1876,6 +1876,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1500940335, guid: a6ec9cf57330f2d4697f0b63de76b529, type: 3}
+      propertyPath: timeLimit
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 74799190805217089, guid: a6ec9cf57330f2d4697f0b63de76b529,
         type: 3}
       propertyPath: m_audioClip
