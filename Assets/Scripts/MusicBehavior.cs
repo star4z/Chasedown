@@ -12,11 +12,19 @@ public class MusicBehavior: MonoBehaviour
 
     private bool _musicPlaying;
     private int _lastBeat;
+    private float _lastBeatTime;
+    private bool _fuckedUpThisBeat = false;
     
     private void Start()
     {
         PlayerBehavior.StartLevel += PlayerBehaviorOnStartLevel;
         PlayerBehavior.FinishLevel += PlayerBehaviorOnFinishLevel;
+        Obstacle.OnEnter += ObstacleOnOnEnter;
+    }
+
+    private void ObstacleOnOnEnter(object sender, Collider e)
+    {
+        _fuckedUpThisBeat = true;
     }
 
     private void PlayerBehaviorOnFinishLevel(object sender, EventArgs e)
@@ -38,16 +46,32 @@ public class MusicBehavior: MonoBehaviour
 
     private void Update()
     {
-        if (_musicPlaying)
+        if (_musicPlaying && CurrentBeat() != _lastBeat)
         {
-            if (CurrentBeat() != _lastBeat)
+            if (!_fuckedUpThisBeat)
             {
-                _lastBeat = CurrentBeat();
-                if (musicUI != null)
-                {
-                    musicUI.SetCurrentBeat(_lastBeat);
-                }
+                HandleNextBeat();
             }
+            else
+            {
+                RestartThisBeat();
+            }
+        }
+    }
+
+    private void RestartThisBeat()
+    {
+        _fuckedUpThisBeat = false;
+        audioSource.time = _lastBeatTime;
+    }
+
+    private void HandleNextBeat()
+    {
+        _lastBeat = CurrentBeat();
+        _lastBeatTime = audioSource.time;
+        if (musicUI != null)
+        {
+            musicUI.SetCurrentBeat(_lastBeat);
         }
     }
 
