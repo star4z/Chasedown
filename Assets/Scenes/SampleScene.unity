@@ -1540,18 +1540,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2078194725 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1500940336, guid: a6ec9cf57330f2d4697f0b63de76b529,
-    type: 3}
-  m_PrefabInstance: {fileID: 355540420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e28b0a28d1b410e883180e8e47bbda9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2099793993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3402448165815088919, guid: e401b4a67e6988d42a66977686df7cf3,
@@ -1731,16 +1719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Veh_Car_Muscle_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: musicUI
-      value: 
-      objectReference: {fileID: 2078194725}
-    - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: velocity
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
