@@ -11,7 +11,7 @@ public class MusicUI: MusicUIBase
     public Sprite succeededSprite;
     public Sprite failedSprite;
 
-    private int _currentBeat;
+    private int _currentBeat = -1;
 
     public override void SetCurrentBeat(int beat)
     {
@@ -31,14 +31,15 @@ public class MusicUI: MusicUIBase
     {
         for (var i = _currentBeat + 1; i < _currentBeat + 1 + beatImages.Count; i++)
         {
+            var imageIndex = i % beatImages.Count;
             if (beats[i])
             {
-                beatImages[i].gameObject.SetActive(true);
-                beatImages[i].sprite = pendingSprite;
+                beatImages[imageIndex].gameObject.SetActive(true);
+                beatImages[imageIndex].sprite = pendingSprite;
             }
             else
             {
-                beatImages[i].gameObject.SetActive(false);
+                beatImages[imageIndex].gameObject.SetActive(false);
             }
         }
     }

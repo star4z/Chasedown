@@ -35,6 +35,7 @@ public class MusicBehavior: MonoBehaviour
 
     private void PlayerBehaviorOnStartLevel(object sender, EventArgs e)
     {
+        musicUI.ResetAllStatuses();
         audioSource.PlayDelayed(startDelayInSeconds);
         _musicPlaying = true;
         _lastBeat = firstBeat;
@@ -77,16 +78,6 @@ public class MusicBehavior: MonoBehaviour
 
     private int CurrentBeat()
     {
-        return (int)Math.Floor(audioSource.time / 60 * bpm) % totalBeats;
-    }
-
-    private int NextBeat(int currentBeat)
-    {
-        return currentBeat < totalBeats - 1 ? ++currentBeat : 0;
-    }
-
-    private int PrevBeat(int currentBeat)
-    {
-        return currentBeat > 0 ? --currentBeat : totalBeats - 1;
+        return (int)Math.Floor(audioSource.time / 60 * bpm);
     }
 }
