@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb70e49901344c99b1d84c9c6c9555b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectSwipeAfterRelease: 0
+  detectSwipeAfterRelease: 1
   SWIPE_THRESHOLD: 20
 --- !u!1 &1049492061130500655
 GameObject:
