@@ -11,6 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 83a4aca77fc1d544d9be0295a0e2899a
+  - enabled: 1
+    path: Assets/Scenes/Level Attempts/Beach 'scape.unity
+    guid: d3d5f4f343325b34a8fd4f91aa3e94fa
+  - enabled: 1
+    path: Assets/Scenes/Level Attempts/City 'scape.unity
+    guid: 953984ab71fcc9346929bc8ae1700d1d
+  - enabled: 1
+    path: Assets/Scenes/Level Attempts/Forest 'scape.unity
+    guid: ea8894ff6222e2544ad13b979811c3b2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 05e1733c711e64c45863ad2ceaf1f214,
       type: 2}

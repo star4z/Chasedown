@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 17561482}
   - component: {fileID: 17561481}
   - component: {fileID: 17561480}
+  - component: {fileID: 17561484}
   m_Layer: 5
   m_Name: Level Select
   m_TagString: Untagged
@@ -214,8 +215,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1706691363}
   - {fileID: 864295940}
+  - {fileID: 1706691363}
   - {fileID: 1636987680}
   - {fileID: 774203174}
   m_Father: {fileID: 0}
@@ -226,6 +227,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &17561484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17561479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9571641c2f68a294d91e03878024668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113622246
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +1005,6 @@ GameObject:
   - component: {fileID: 864295943}
   - component: {fileID: 864295942}
   - component: {fileID: 864295941}
-  - component: {fileID: 864295944}
   m_Layer: 5
   m_Name: lvl1button
   m_TagString: Untagged
@@ -1013,7 +1025,7 @@ RectTransform:
   m_Children:
   - {fileID: 646271901}
   m_Father: {fileID: 17561483}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1064,9 +1076,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 864295944}
-        m_TargetAssemblyTypeName: Level_Select, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 17561484}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: StartLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1114,18 +1126,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864295939}
   m_CullTransparentMesh: 1
---- !u!114 &864295944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864295939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9571641c2f68a294d91e03878024668a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1140909601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,7 +1877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1636987682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 17561484}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: StartLevel3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1636987682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2041,7 +2053,7 @@ RectTransform:
   m_Children:
   - {fileID: 1396308967}
   m_Father: {fileID: 17561483}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2091,7 +2103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706691365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 17561484}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: StartLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1706691365
 MonoBehaviour:
   m_ObjectHideFlags: 0
