@@ -1990,24 +1990,9 @@ PrefabInstance:
       objectReference: {fileID: 355540421}
     - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
-      propertyPath: bpm
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
       propertyPath: musicUI
       value: 
       objectReference: {fileID: 1500940336}
-    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: startDelay
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 1049492062193470229, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
-        type: 3}
-      propertyPath: startDelayInSeconds
-      value: 0.45
-      objectReference: {fileID: 0}
     - target: {fileID: 1049492062682026692, guid: 81212dd68f7a0ea4bb3fb4786e2f1aa9,
         type: 3}
       propertyPath: startButton

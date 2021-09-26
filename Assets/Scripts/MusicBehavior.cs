@@ -11,7 +11,6 @@ public class MusicBehavior: MonoBehaviour
     public MusicUI musicUI;
 
     private bool _musicPlaying;
-    private DateTime _playbackStartTime;
     private int _lastBeat;
     
     private void Start()
@@ -29,7 +28,6 @@ public class MusicBehavior: MonoBehaviour
     private void PlayerBehaviorOnStartLevel(object sender, EventArgs e)
     {
         audioSource.PlayDelayed(startDelayInSeconds);
-        _playbackStartTime = DateTime.Now;
         _musicPlaying = true;
         _lastBeat = firstBeat;
         if (musicUI != null)
